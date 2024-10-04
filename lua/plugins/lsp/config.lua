@@ -89,7 +89,12 @@ function M.setup()
     lsp.clangd.setup(default_settings)
 
     lsp.ltex.setup(default_settings)
-    lsp.typst_lsp.setup(vim.tbl_extend("force", default_settings, { root_dir = lsp.util.root_pattern("main.typ") }))
+    lsp.typst_lsp.setup(vim.tbl_extend("force", default_settings, {
+        root_dir = lsp.util.root_pattern("main.typ"),
+        settings = {
+            exportPdf = "never",
+        },
+    }))
 
     vim.g.markdown_fenced_languages = {
         'ts=typescript'
