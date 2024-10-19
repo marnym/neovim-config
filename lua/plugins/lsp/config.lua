@@ -42,7 +42,7 @@ function M.setup()
     local lsp = require('lspconfig')
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    capabilities.offsetEncoding = { 'utf-16' }
+    capabilities.offsetEncoding = { 'utf-8' }
 
     local default_settings = { on_attach = M.on_attach, capabilities = capabilities }
 
@@ -176,6 +176,16 @@ function M.setup()
                         capacity = 256,
                     }
                 }
+            }
+        }
+    }
+
+    lsp.basedpyright.setup {
+        on_attach = M.on_attach,
+        capabilities = capabilities,
+        settings = {
+            basedpyright = {
+                typeCheckingMode = "standard"
             }
         }
     }
