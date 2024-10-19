@@ -89,10 +89,13 @@ function M.setup()
     lsp.clangd.setup(default_settings)
 
     lsp.ltex.setup(default_settings)
-    lsp.typst_lsp.setup(vim.tbl_extend("force", default_settings, {
+    lsp.tinymist.setup(vim.tbl_extend("force", default_settings, {
+        offset_encoding = "utf-8",
         root_dir = lsp.util.root_pattern("main.typ"),
         settings = {
             exportPdf = "never",
+            systemFonts = false,
+            formatterMode = "typstyle",
         },
     }))
 
