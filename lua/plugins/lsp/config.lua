@@ -94,8 +94,8 @@ function M.setup()
         root_dir = lsp.util.root_pattern("main.typ"),
         settings = {
             exportPdf = "never",
-            systemFonts = false,
-            formatterMode = "typstyle",
+            systemFonts = true,
+            formatterMode = "disable",
         },
     }))
 
