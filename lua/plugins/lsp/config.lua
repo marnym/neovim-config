@@ -95,7 +95,11 @@ function M.setup()
         settings = {
             exportPdf = "never",
             systemFonts = true,
-            formatterMode = "disable",
+            semanticTokens = "disable",
+            compileStatus = "disable",
+            dragAndDrop = "disable",
+            renderDocs = "disable",
+            previewFeature = "disable",
         },
     }))
 
