@@ -53,6 +53,10 @@ vim.keymap.set("n", "<leader>bd", vim_cmd("bwipeout!"), opts)
 -- exit terminal mode
 vim.keymap.set("t", "<C-space>", "<C-\\><C-n>", opts)
 
+-- spell
+vim.keymap.set("n", "zp", "[s", opts)
+vim.keymap.set("n", "zn", "]s", opts)
+
 -- Plugins
 vim.keymap.set("n", "<leader>tb", vim_cmd("Gitsigns toggle_current_line_blame"))
 vim.keymap.set("n", "<leader>th", vim_cmd("Gitsigns preview_hunk"))
