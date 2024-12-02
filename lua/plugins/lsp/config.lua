@@ -88,7 +88,20 @@ function M.setup()
 
     lsp.clangd.setup(default_settings)
 
-    lsp.ltex.setup(default_settings)
+    lsp.ltex.setup {
+        cmd = { "/home/markus/dev/ltex-ls-plus/target/appassembler/bin/ltex-ls-plus" },
+        filetypes = { "typst" },
+        on_attach = M.on_attach,
+        capabilities = capabilities,
+        settings = {
+            ltex = {
+                enabled = { "typst" },
+                checkFrequency = "save",
+                language = "en-US",
+                sentenceCacheSize = 5000,
+            }
+        }
+    }
     lsp.tinymist.setup(vim.tbl_extend("force", default_settings, {
         offset_encoding = "utf-8",
         root_dir = lsp.util.root_pattern("main.typ"),
