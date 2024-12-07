@@ -1,6 +1,7 @@
 return {
     {
         "neovim/nvim-lspconfig",
+        dependencies = { 'saghen/blink.cmp' },
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
@@ -28,16 +29,6 @@ return {
                 },
             },
         },
-    },
-    {
-        "ray-x/lsp_signature.nvim",
-        event = "InsertEnter",
-        config = function()
-            require("lsp_signature").setup({
-                bind = true,
-                hint_enable = true,
-            })
-        end,
     },
     {
         "scalameta/nvim-metals",

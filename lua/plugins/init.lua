@@ -111,7 +111,7 @@ return {
             }
         end
     },
-    { "windwp/nvim-autopairs", lazy = true, config = true, },
+    { "windwp/nvim-autopairs", event = "InsertEnter", config = true, },
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
