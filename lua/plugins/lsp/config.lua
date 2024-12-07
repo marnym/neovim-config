@@ -41,7 +41,7 @@ end
 function M.setup()
     local lsp = require('lspconfig')
 
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
     capabilities.offsetEncoding = { 'utf-8' }
 
     local default_settings = { on_attach = M.on_attach, capabilities = capabilities }
@@ -222,7 +222,8 @@ function M.setup()
         capabilities = capabilities,
     }
 
-    local json_capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local json_capabilities = vim.deepcopy(capabilities)
+    json_capabilities.offsetEncoding = { 'utf-8' }
     json_capabilities.textDocument.completion.completionItem.snippetSupport = true
     lsp.jsonls.setup {
         on_attach = M.on_attach,
