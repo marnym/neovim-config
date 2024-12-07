@@ -1,5 +1,9 @@
 return {
-    keymap = { preset = 'default' },
+    keymap = {
+        preset = 'enter',
+        ['<C-k>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
+    },
 
     appearance = {
         use_nvim_cmp_as_default = true,
@@ -8,7 +12,11 @@ return {
 
     sources = {
         completion = {
-            enabled_providers = { 'lsp', 'path', 'luasnip', 'buffer' },
+            enabled_providers = { 'lsp', 'path', 'luasnip', 'buffer', 'lazydev' },
+        },
+        providers = {
+            lsp = { fallback_for = { 'lazydev' } },
+            lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' }
         },
     },
 
