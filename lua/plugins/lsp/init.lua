@@ -1,42 +1,3 @@
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(ev)
-        local bufnr = ev.buf
-        if not bufnr then
-            vim.print('did not receive buffer', ev)
-        end
-
-        local nmap = function(keys, func, desc)
-            if desc then
-                desc = 'LSP: ' .. desc
-            end
-
-            vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-        end
-
-        local no_preview = require('plugins.telescope').no_preview
-
-        nmap('<leader>re', vim.lsp.buf.rename, '[R]e[N]ame')
-        nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-
-        nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-        nmap('gr', function() require('telescope.builtin').lsp_references(no_preview()) end, '[G]oto [R]eferences')
-        nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-        nmap('gt', vim.lsp.buf.type_definition, '[Goto] [T]ype definition')
-        nmap('<leader>ds', function() require('telescope.builtin').lsp_document_symbols(no_preview()) end,
-            '[D]ocument [S]ymbols')
-        nmap('<leader>ws', function() require('telescope.builtin').lsp_dynamic_workspace_symbols(no_preview()) end,
-            '[W]orkspace [S]ymbols')
-
-        nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    end,
-})
-
-local function on_attach(client)
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(true)
-    end
-end
-
 return {
     {
         'neovim/nvim-lspconfig',
@@ -44,36 +5,70 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-            vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help,
-                { border = 'rounded' })
-
-            local function disable_formatting(client)
-                client.server_capabilities.documentFormattingProvider = false
-                client.server_capabilities.documentRangeFormattingProvider = false
-                on_attach(client)
-            end
+            vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+                vim.lsp.handlers.signature_help, { border = 'rounded' }
+            )
 
             local lsp = require('lspconfig')
 
             local capabilities = require('blink.cmp').get_lsp_capabilities()
             capabilities.offsetEncoding = { 'utf-8' }
 
-            require('plugins.lsp.ansible').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.c').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.documents').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.go').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.html').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.json').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.lua').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.markdown').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.nix').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.python').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.rust').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.shell').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.typescript').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.vue').setup(lsp, capabilities, disable_formatting)
-            require('plugins.lsp.yaml').setup(lsp, capabilities, on_attach)
-            require('plugins.lsp.zig').setup(lsp, capabilities, on_attach)
+            require('plugins.lsp.ansible').setup(lsp, capabilities)
+            require('plugins.lsp.c').setup(lsp, capabilities)
+            require('plugins.lsp.documents').setup(lsp, capabilities)
+            require('plugins.lsp.go').setup(lsp, capabilities)
+            require('plugins.lsp.html').setup(lsp, capabilities)
+            require('plugins.lsp.json').setup(lsp, capabilities)
+            require('plugins.lsp.lua').setup(lsp, capabilities)
+            require('plugins.lsp.markdown').setup(lsp, capabilities)
+            require('plugins.lsp.nix').setup(lsp, capabilities)
+            require('plugins.lsp.python').setup(lsp, capabilities)
+            require('plugins.lsp.rust').setup(lsp, capabilities)
+            require('plugins.lsp.shell').setup(lsp, capabilities)
+            require('plugins.lsp.typescript').setup(lsp, capabilities)
+            require('plugins.lsp.vue').setup(lsp, capabilities)
+            require('plugins.lsp.yaml').setup(lsp, capabilities)
+            require('plugins.lsp.zig').setup(lsp, capabilities)
+
+            vim.api.nvim_create_autocmd('LspAttach', {
+                callback = function(ev)
+                    local bufnr = ev.buf
+                    if not bufnr then return end
+
+                    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+                    if client and vim.bo.filetype == 'vue' then
+                        client.server_capabilities.documentFormattingProvider = false
+                        client.server_capabilities.documentRangeFormattingProvider = false
+                    end
+
+                    local nmap = function(keys, func, desc)
+                        if desc then
+                            desc = 'LSP: ' .. desc
+                        end
+
+                        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+                    end
+
+                    local no_preview = require('plugins.telescope').no_preview
+
+                    nmap('<leader>re', vim.lsp.buf.rename, '[R]e[N]ame')
+                    nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+
+                    nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+                    nmap('gr', function() require('telescope.builtin').lsp_references(no_preview()) end,
+                        '[G]oto [R]eferences')
+                    nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+                    nmap('gt', vim.lsp.buf.type_definition, '[Goto] [T]ype definition')
+                    nmap('<leader>ds', function() require('telescope.builtin').lsp_document_symbols(no_preview()) end,
+                        '[D]ocument [S]ymbols')
+                    nmap('<leader>ws',
+                        function() require('telescope.builtin').lsp_dynamic_workspace_symbols(no_preview()) end,
+                        '[W]orkspace [S]ymbols')
+
+                    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+                end,
+            })
         end,
     },
     {

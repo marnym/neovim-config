@@ -1,7 +1,7 @@
 local M = {}
 
-M.setup = function(lsp, capabilities, on_attach)
-    lsp.volar.setup { on_attach = on_attach, capabilities = capabilities }
+M.setup = function(lsp, capabilities)
+    lsp.volar.setup { capabilities = capabilities }
 end
 
 return M

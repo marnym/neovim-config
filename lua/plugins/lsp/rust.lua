@@ -1,9 +1,8 @@
 local M = {}
 
-M.setup = function(lsp, capabilities, on_attach)
+M.setup = function(lsp, capabilities)
     vim.g.rustaceanvim = {
         server = {
-            on_attach = on_attach,
             capabilities = capabilities,
             default_settings = {
                 ['rust-analyzer'] = {

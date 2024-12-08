@@ -1,11 +1,10 @@
 local M = {}
 
-M.setup = function(lsp, capabilities, on_attach)
+M.setup = function(lsp, capabilities)
     local capabilities = vim.deepcopy(capabilities)
     capabilities.offsetEncoding = { 'utf-8' }
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     lsp.jsonls.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
         settings = {
             json = {

@@ -1,11 +1,8 @@
 local M = {}
 
-M.setup = function(lsp, capabilities, on_attach)
+M.setup = function(lsp, capabilities)
     local yaml_cfg = require('yaml-companion').setup {
-        lspconfig = {
-            capabilities = capabilities,
-            on_attach = on_attach,
-        }
+        lspconfig = { capabilities = capabilities },
     }
     lsp.yamlls.setup(yaml_cfg)
 end

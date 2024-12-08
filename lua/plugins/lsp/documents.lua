@@ -1,11 +1,10 @@
 local M = {}
 
-M.setup = function(lsp, capabilities, on_attach)
+M.setup = function(lsp, capabilities)
     lsp.ltex.setup {
         cmd = { '/home/markus/dev/ltex-ls-plus/target/appassembler/bin/ltex-ls-plus' },
         filetypes = { 'typst' },
         autostart = false,
-        on_attach = on_attach,
         capabilities = capabilities,
         settings = {
             ltex = {
@@ -18,7 +17,6 @@ M.setup = function(lsp, capabilities, on_attach)
     }
 
     lsp.texlab.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
         root_dir = lsp.util.root_pattern('*.tex'),
     }
@@ -26,7 +24,6 @@ M.setup = function(lsp, capabilities, on_attach)
     lsp.tinymist.setup {
         offset_encoding = 'utf-8',
         capabilities = capabilities,
-        on_attach = on_attach,
         root_dir = lsp.util.root_pattern('main.typ'),
         settings = {
             exportPdf = 'never',

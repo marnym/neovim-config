@@ -1,8 +1,7 @@
 local M = {}
 
-M.setup = function(lsp, capabilities, on_attach)
+M.setup = function(lsp, capabilities)
     lsp.ansiblels.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
         filetypes = { 'yml', 'yaml', 'yml.ansible', 'yaml.ansible' },
         root_dir = lsp.util.root_pattern('ansible.cfg'),

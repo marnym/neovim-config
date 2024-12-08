@@ -26,14 +26,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 
-M.setup = function(lsp, capabilities, on_attach)
+M.setup = function(lsp, capabilities)
     vim.g.markdown_fenced_languages = {
         'ts=typescript',
     }
 
     lsp.denols.setup {
         capabilities = capabilities,
-        on_attach = on_attach,
         root_dir = lsp.util.root_pattern('deno.json', 'deno.jsonc'),
         filetypes = { 'typescript, typescriptreact, typescript.tsx' },
         settings = {
@@ -53,7 +52,6 @@ M.setup = function(lsp, capabilities, on_attach)
 
     require('lspconfig.configs').vtsls = require('vtsls').lspconfig
     lsp.vtsls.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
         cmd = { 'npx', '--yes', '@vtsls/language-server', '--stdio' }, -- don't like this, but packaging pnpm packages in Nix is not currently nice
     }

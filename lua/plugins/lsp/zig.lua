@@ -1,7 +1,7 @@
 local M = {}
 
-M.setup = function(lsp, capabilities, on_attach)
-    lsp.zls.setup { capabilities = capabilities, on_attach = on_attach }
+M.setup = function(lsp, capabilities)
+    lsp.zls.setup { capabilities = capabilities }
 end
 
 return M
