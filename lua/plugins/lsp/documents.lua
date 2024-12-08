@@ -24,6 +24,7 @@ M.setup = function(lsp, capabilities, on_attach)
     }
 
     lsp.tinymist.setup {
+        offset_encoding = 'utf-8',
         capabilities = capabilities,
         on_attach = on_attach,
         root_dir = lsp.util.root_pattern('main.typ'),
