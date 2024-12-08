@@ -28,7 +28,7 @@ local function deno_overwrite()
     if is_deno_project then
         return { "deno_fmt" }
     else
-        return { { "prettierd", "prettier" } }
+        return { "prettierd", "prettier", stop_after_first = true }
     end
 end
 
@@ -43,10 +43,10 @@ return {
                 function()
                     require("conform").format { async = true, lsp_format = "fallback" }
                 end,
-                mode = "",
                 desc = "Format buffer",
             },
         },
+        --- @type conform.setupOpts
         opts = {
             formatters_by_ft = {
                 python = { "black" },
