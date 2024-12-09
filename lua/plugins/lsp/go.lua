@@ -1,8 +1,7 @@
 local M = {}
 
-M.setup = function(lsp, capabilities, on_attach)
+M.setup = function(lsp, capabilities)
     lsp.gopls.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
         settings = {
             gopls = {

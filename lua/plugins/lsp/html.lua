@@ -1,8 +1,8 @@
 local M = {}
 
-M.setup = function(lsp, capabilities, on_attach)
-    lsp.html.setup { capabilities = capabilities, on_attach = on_attach }
-    lsp.cssls.setup { capabilities = capabilities, on_attach = on_attach }
+M.setup = function(lsp, capabilities)
+    lsp.html.setup { capabilities = capabilities }
+    lsp.cssls.setup { capabilities = capabilities }
 end
 
 return M
