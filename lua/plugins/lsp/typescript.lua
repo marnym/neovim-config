@@ -51,10 +51,9 @@ M.setup = function(lsp, capabilities)
     }
 
     require('lspconfig.configs').vtsls = require('vtsls').lspconfig
-    lsp.vtsls.setup {
-        capabilities = capabilities,
-        cmd = { 'npx', '--yes', '@vtsls/language-server', '--stdio' }, -- don't like this, but packaging pnpm packages in Nix is not currently nice
-    }
+    lsp.vtsls.setup { capabilities = capabilities }
+
+    lsp.tailwindcss.setup { capabilities = capabilities }
 end
 
 return M
