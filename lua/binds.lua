@@ -68,8 +68,6 @@ vim.keymap.set('n', '<leader>pr', function()
 end)
 
 -- execute file
-vim.keymap.set('n', '<space><space>x', '<cmd>source %<CR>')
--- execute current line
-vim.keymap.set('n', '<space>x', ':.lua<CR>')
+vim.keymap.set('n', '<space>x', '<cmd>source %<CR>')
 -- execute selected
 vim.keymap.set('v', '<space>x', ':lua<CR>')
