@@ -9,7 +9,7 @@ return {
 
     appearance = {
         use_nvim_cmp_as_default = true,
-        nerd_font_variant = 'mono'
+        nerd_font_variant = 'mono',
     },
 
     sources = {
@@ -38,5 +38,5 @@ return {
 
     completion = { accept = { auto_brackets = { enabled = true } } },
 
-    signature = { enabled = true }
+    signature = { enabled = true },
 }

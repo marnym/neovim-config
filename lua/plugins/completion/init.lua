@@ -3,7 +3,7 @@ return {
     lazy = false,
     dependencies = {
         'rafamadriz/friendly-snippets',
-        'L3MON4D3/LuaSnip',
+        { 'L3MON4D3/LuaSnip', version = 'v2.*' },
         {
             'folke/lazydev.nvim',
             ft = 'lua',
