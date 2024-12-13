@@ -3,19 +3,30 @@ vim.cmd [[highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 
 vim.cmd [[highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline]]
 vim.g.qs_max_chars = 150
 
+-- Remove once mini.files supports this out of the box
+vim.api.nvim_create_autocmd('User', {
+    pattern = 'MiniFilesActionRename',
+    callback = function(event)
+        Snacks.rename.on_rename_file(event.data.from, event.data.to)
+    end,
+})
+
+
 return {
-    -- Visual
     {
-        'lukas-reineke/indent-blankline.nvim',
-        main = 'ibl',
-        event = 'BufEnter',
+        'folke/snacks.nvim',
+        priority = 1000,
+        lazy = false,
         opts = {
-            debounce = 100,
-            indent = { char = '┊' },
-            scope = {
-                enabled = true,
-                highlight = 'Identifier',
-                char = '│',
+            bigfile = { enabled = true },
+            indent = {
+                only_current = true,
+                animate = { enabled = false },
+            },
+            input = { enabled = true },
+            notifier = { enabled = true },
+            statuscolumn = {
+                refresh = 50,
             },
         },
     },
@@ -100,12 +111,6 @@ return {
         },
     },
     -- mini.nvim
-    {
-        'echasnovski/mini.starter',
-        version = false,
-        lazy = false,
-        config = true,
-    },
     {
         'echasnovski/mini.surround',
         version = false,
