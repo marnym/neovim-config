@@ -97,7 +97,6 @@ return {
         cmd = 'Neogen',
         opts = { snippet_engine = 'luasnip' },
     },
-    { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
     {
         'nvim-neo-tree/neo-tree.nvim',
         branch = 'v3.x',
@@ -131,5 +130,10 @@ return {
         keys = {
             { '-', function() require('mini.files').open(vim.api.nvim_buf_get_name(0)) end },
         },
+    },
+    {
+        'echasnovski/mini.pairs',
+        version = false,
+        event = 'InsertEnter',
     },
 }
