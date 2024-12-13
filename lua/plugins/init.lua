@@ -28,6 +28,12 @@ return {
             statuscolumn = {
                 refresh = 50,
             },
+            styles = {
+                notification = {
+                    wo = { wrap = true },
+                },
+            },
+
         },
     },
     {
@@ -135,5 +141,6 @@ return {
         'echasnovski/mini.pairs',
         version = false,
         event = 'InsertEnter',
+        config = function() require('mini.pairs').setup() end,
     },
 }
