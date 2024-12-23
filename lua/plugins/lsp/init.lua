@@ -54,16 +54,8 @@ return {
                     nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
                     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-                    nmap('gr', function() require('telescope.builtin').lsp_references() end,
-                        '[G]oto [R]eferences')
                     nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
                     nmap('gt', vim.lsp.buf.type_definition, '[Goto] [T]ype definition')
-                    nmap('<leader>ds', function() require('telescope.builtin').lsp_document_symbols() end,
-                        '[D]ocument [S]ymbols')
-                    nmap('<leader>ws',
-                        function() require('telescope.builtin').lsp_dynamic_workspace_symbols() end,
-                        '[W]orkspace [S]ymbols')
-
                     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
                 end,
             })

@@ -83,7 +83,7 @@ return {
         'someone-stole-my-name/yaml-companion.nvim',
         lazy = true,
         dependencies = { 'nvim-lua/plenary.nvim' },
-        config = function() require('telescope').load_extension('yaml_schema') end,
+        -- config = function() require('telescope').load_extension('yaml_schema') end,
     },
     {
         'mrcjkb/rustaceanvim',
