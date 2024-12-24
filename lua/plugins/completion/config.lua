@@ -34,7 +34,10 @@ return {
         jump = function(direction) require('luasnip').jump(direction) end,
     },
 
-    completion = { accept = { auto_brackets = { enabled = true } } },
+    completion = {
+        accept = { auto_brackets = { enabled = true } },
+        menu = { auto_show = function(ctx) return ctx.mode ~= 'cmdline' end },
+    },
 
     signature = { enabled = true },
 }
