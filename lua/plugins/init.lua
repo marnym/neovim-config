@@ -25,7 +25,7 @@ return {
                 only_current = true,
                 animate = { enabled = false },
             },
-            input = { enabled = true },
+            input = { enabled = false },
             notifier = { enabled = true },
             statuscolumn = {
                 refresh = 50,
