@@ -17,11 +17,14 @@ set.clipboard = 'unnamedplus'
 -- enable mouse
 set.mouse = 'a'
 
--- set indentation
-set.tabstop = 4
-set.shiftwidth = 4
-set.softtabstop = 4
+-- use spaces
 set.expandtab = true
+-- number of spaces
+set.shiftwidth = 4
+-- use the value of shiftwidth
+set.softtabstop = -1
+-- always use shiftwidth
+set.smarttab = true
 
 -- enable break indent
 set.breakindent = true
