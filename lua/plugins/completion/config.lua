@@ -13,15 +13,13 @@ return {
     },
 
     sources = {
-        completion = {
-            enabled_providers = { 'lsp', 'path', 'luasnip', 'buffer', 'lazydev' },
-        },
+        default = { 'lsp', 'path', 'luasnip', 'buffer', 'lazydev' },
         providers = {
-            lsp = { name = 'LSP', fallback_for = { 'lazydev' } },
-            lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
+            lsp = { name = 'LSP', fallbacks = { 'buffer' } },
+            lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', fallbacks = { 'lsp' } },
             path = { name = 'Path', score_offset = 2 },
             snippets = { name = 'Snippets', score_offset = -2 },
-            buffer = { name = 'Buffer', fallback_for = { 'lsp' } },
+            buffer = { name = 'Buffer' },
         },
     },
 
