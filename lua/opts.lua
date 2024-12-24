@@ -1,82 +1,82 @@
--- set leader key
-vim.api.nvim_set_keymap("", " ", "", { noremap = true })
-vim.g.mapleader = " "
+local set = vim.opt
 
-local opt = vim.opt
+-- set leader key
+vim.api.nvim_set_keymap('', ' ', '', { noremap = true })
+vim.g.mapleader = ' '
 
 -- add all subdirectories to path
-opt.path = vim.o.path .. "**"
+set.path = vim.o.path .. '**'
 
 -- line numbers default
 vim.wo.number = true
-opt.relativenumber = true
+set.relativenumber = true
 
 -- copy paste between vim and everything else
-opt.clipboard = "unnamedplus"
+set.clipboard = 'unnamedplus'
 
 -- enable mouse
-opt.mouse = "a"
+set.mouse = 'a'
 
 -- set indentation
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.expandtab = true
+set.tabstop = 4
+set.shiftwidth = 4
+set.softtabstop = 4
+set.expandtab = true
 
 -- enable break indent
-opt.breakindent = true
+set.breakindent = true
 
 -- save undo history
-opt.undofile = true
+set.undofile = true
 
 -- disable highlight on search
-opt.hlsearch = false
+set.hlsearch = false
 
 -- case insensitive search
-opt.ignorecase = true
-opt.smartcase = true
+set.ignorecase = true
+set.smartcase = true
 
 -- hide status, since status line shows it
-opt.showmode = false
+set.showmode = false
 
 -- keep signcolumn on
 vim.wo.signcolumn = 'yes'
 
 -- decrease update time
-opt.updatetime = 1000
+set.updatetime = 1000
 
 -- decrease timeoutlen
-opt.timeoutlen = 500
+set.timeoutlen = 500
 
 -- set completeopt
-opt.completeopt = "menuone,noselect"
+set.completeopt = 'menuone,noselect'
 
-opt.termguicolors = true
+set.termguicolors = true
 
 -- so that `` is visible in markdown files
-opt.conceallevel = 0
+set.conceallevel = 0
 
 -- Enable highlighting of the current line
-opt.cursorline = true
+set.cursorline = true
 
 -- always keep 10 lines between cursor and top/bottom
-opt.scrolloff = 10
+set.scrolloff = 10
 
 -- opt.smoothscroll = true
 
 -- open splits to the right and bottom
-opt.splitright = true
-opt.splitbelow = true
+set.splitright = true
+set.splitbelow = true
 
 -- listchars
-opt.list = true
-opt.listchars = {
-    eol = "↲",
-    tab = "» ",
-    trail = "·",
+set.list = true
+set.listchars = {
+    eol = '↲',
+    tab = '» ',
+    trail = '·',
 }
 
-opt.inccommand = "split"
+set.inccommand = 'split'
 
 -- filetypes
 vim.filetype.add {
@@ -84,7 +84,7 @@ vim.filetype.add {
         ['.*/playbooks/.*%.ya?ml'] = 'yaml.ansible',
         ['.*/roles/.*/tasks/.*%.ya?ml'] = 'yaml.ansible',
         ['.*/roles/.*/handlers/.*%.ya?ml'] = 'yaml.ansible',
-    }
+    },
 }
 
 vim.wo.colorcolumn = '120'
