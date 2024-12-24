@@ -17,6 +17,8 @@ return {
         'folke/snacks.nvim',
         priority = 1000,
         lazy = false,
+        --- @module 'snacks'
+        --- @type snacks.Config
         opts = {
             bigfile = { enabled = true },
             indent = {
@@ -31,6 +33,11 @@ return {
             styles = {
                 notification = {
                     wo = { wrap = true },
+                },
+                input = {
+                    keys = {
+                        i_ctrl_w = { '<c-w>', '<c-w>', mode = 'i' },
+                    },
                 },
             },
 
