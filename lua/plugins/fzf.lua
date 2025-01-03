@@ -1,6 +1,16 @@
 return {
     'ibhagwan/fzf-lua',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {
+        winopts = {
+            width = 0.70,
+            height = 0.75,
+            preview = {
+                layout = 'vertical',
+                vertical = 'down:65%',
+            },
+        },
+    },
     keys = {
         {
             '<leader>sh',
@@ -9,12 +19,16 @@ return {
         },
         {
             '<leader>ff',
-            function() require('fzf-lua').files { cmd = 'fd --type f --exclude node_modules' } end,
+            -- default is copied from https://github.com/ibhagwan/fzf-lua/wiki/Options
+            -- node_modules is added to it
+            function() require('fzf-lua').files { fd_opts = '--color=never --type f --hidden --follow --exclude .git --exclude node_modules' } end,
             desc = '[F]ind [F]iles',
         },
         {
             '<leader>fg',
-            function() require('fzf-lua').live_grep { cmd = "rg --color=always --smart-case -g '!{.git,node_modules}/'" } end,
+            -- default is copied from https://github.com/ibhagwan/fzf-lua/wiki/Options
+            -- node_modules is added to it
+            function() require('fzf-lua').live_grep { cmd = "rg --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -g '!{.git,node_modules}/' -e" } end,
             desc = '[F]ind using [G]rep',
         },
         {
