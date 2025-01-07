@@ -20,8 +20,8 @@ return {
             path = { name = 'Path', score_offset = 2 },
             snippets = { name = 'Snippets', score_offset = -2 },
             buffer = { name = 'Buffer' },
-            cmdline = {},
         },
+        cmdline = {},
     },
 
     snippets = {
