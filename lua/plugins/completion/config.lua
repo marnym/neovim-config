@@ -20,6 +20,7 @@ return {
             path = { name = 'Path', score_offset = 2 },
             snippets = { name = 'Snippets', score_offset = -2 },
             buffer = { name = 'Buffer' },
+            cmdline = {},
         },
     },
 
@@ -36,7 +37,6 @@ return {
 
     completion = {
         accept = { auto_brackets = { enabled = true } },
-        menu = { auto_show = function(ctx) return ctx.mode ~= 'cmdline' end },
     },
 
     signature = { enabled = true },
