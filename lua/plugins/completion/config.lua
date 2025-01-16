@@ -13,7 +13,7 @@ return {
     },
 
     sources = {
-        default = { 'lsp', 'path', 'luasnip', 'buffer', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
         providers = {
             lsp = { name = 'LSP', fallbacks = { 'buffer' } },
             lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', fallbacks = { 'lsp' } },
@@ -62,6 +62,7 @@ return {
     },
 
     snippets = {
+        preset = 'luasnip',
         expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
         active = function(filter)
             if filter and filter.direction then
