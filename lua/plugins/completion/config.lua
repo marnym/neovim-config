@@ -58,7 +58,10 @@ return {
                 end,
             },
         },
-        cmdline = {},
+    },
+
+    cmdline = {
+        enabled = false,
     },
 
     snippets = {
