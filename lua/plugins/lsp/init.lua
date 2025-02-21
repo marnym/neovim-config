@@ -53,8 +53,10 @@ return {
                     nmap('<leader>re', vim.lsp.buf.rename, '[R]e[N]ame')
                     nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
+
                     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
                     nmap('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+                    nmap('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
                     nmap('gt', vim.lsp.buf.type_definition, '[Goto] [T]ype definition')
                     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
                 end,
