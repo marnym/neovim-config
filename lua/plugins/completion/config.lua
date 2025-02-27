@@ -60,10 +60,6 @@ return {
         },
     },
 
-    cmdline = {
-        enabled = false,
-    },
-
     snippets = {
         preset = 'luasnip',
         expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
