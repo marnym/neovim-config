@@ -48,6 +48,11 @@ return {
         },
         --- @type conform.setupOpts
         opts = {
+            formatters = {
+                typstyle = {
+                    prepend_args = { '--column', '120' },
+                },
+            },
             formatters_by_ft = {
                 python = { 'black' },
 
