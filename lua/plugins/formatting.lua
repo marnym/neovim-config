@@ -52,6 +52,9 @@ return {
                 typstyle = {
                     prepend_args = { '--column', '120' },
                 },
+                deno_fmt = {
+                    append_args = { '--line-width=120' },
+                },
             },
             formatters_by_ft = {
                 python = { 'black' },
