@@ -1,8 +1,6 @@
 local M = {}
 
 M.setup = function(lsp, capabilities)
-    local capabilities = vim.deepcopy(capabilities)
-    capabilities.offsetEncoding = { 'utf-8' }
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     lsp.jsonls.setup {
         capabilities = capabilities,

@@ -12,7 +12,6 @@ return {
             local lsp = require('lspconfig')
 
             local capabilities = require('blink.cmp').get_lsp_capabilities()
-            capabilities.offsetEncoding = { 'utf-8' }
 
             require('plugins.lsp.ansible').setup(lsp, capabilities)
             require('plugins.lsp.c').setup(lsp, capabilities)
