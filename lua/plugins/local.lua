@@ -1,14 +1,16 @@
 return {
     -- {
-    --     dir = "/home/markus/dev/typst-watch.nvim",
+    --     dir = '/home/markus/dev/typst-watch.nvim',
+    --     ft = 'typst',
     --     opts = {
-    --         preview_cmd = "zathura"
+    --         preview_cmd = { 'zathura' },
     --     },
-    --     ft = "typst"
     -- },
     {
-        "marnym/typst-watch.nvim",
-        ft = "typst",
-        config = true,
+        'marnym/typst-watch.nvim',
+        ft = 'typst',
+        opts = {
+            preview_cmd = { 'zathura' },
+        },
     },
 }
