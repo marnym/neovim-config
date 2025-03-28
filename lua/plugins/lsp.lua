@@ -62,6 +62,36 @@ return {
                     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
                 end,
             })
+
+            vim.lsp.config('*', {
+                capabilities = require('blink.cmp').get_lsp_capabilities(),
+                root_markers = { '.git' },
+            })
+
+            vim.lsp.enable {
+                'ansiblels',
+                'basedpyright',
+                'bashls',
+                'clangd',
+                'cssls',
+                'denols',
+                'gopls',
+                'harper_ls',
+                'html',
+                'json',
+                'lua_ls',
+                'marksman',
+                'nil_ls',
+                'superhtml',
+                'tailwindcss',
+                'terraformls',
+                'texlab',
+                'tinymist',
+                'volar',
+                'vtsls',
+                'yamlls',
+                'zls',
+            }
         end,
     },
     {
