@@ -3,8 +3,10 @@
 return {
     keymap = {
         preset = 'enter',
-        ['<C-k>'] = { 'select_prev', 'fallback' },
-        ['<C-j>'] = { 'select_next', 'fallback' },
+        ['<C-k>'] = { 'select_prev' },
+        ['<C-j>'] = { 'select_next' },
+        ['<C-l>'] = { 'snippet_forward' },
+        ['<C-h>'] = { 'snippet_backward' },
         ['<Tab>'] = {},
         ['<S-Tab>'] = {},
     },
