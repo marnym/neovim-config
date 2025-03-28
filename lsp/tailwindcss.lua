@@ -1,0 +1,27 @@
+--- @type vim.lsp.Config
+return {
+    cmd = { 'tailwindcss-language-server', '--stdio' },
+    filetypes = {
+        'astro',
+        'astro-markdown',
+        'ejs',
+        'eta',
+        'gohtml',
+        'gohtmltmpl',
+        'handlebars',
+        'hbs',
+        'htmlangular',
+        'css',
+        'less',
+        'postcss',
+        'sass',
+        'scss',
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+        'vue',
+        'svelte',
+        'templ',
+    },
+}

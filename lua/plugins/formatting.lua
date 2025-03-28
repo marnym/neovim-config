@@ -46,6 +46,7 @@ return {
                 desc = 'Format buffer',
             },
         },
+        --- @module "conform"
         --- @type conform.setupOpts
         opts = {
             formatters = {

@@ -1,4 +1,4 @@
-require('opts')
+require('core.options')
 
 -- load lazy
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -25,7 +25,8 @@ require('lazy').setup('plugins', {
 vim.api.nvim_create_autocmd('User', {
     pattern = 'VeryLazy',
     callback = function()
-        require('binds')
-        require('globals')
+        require('core.binds')
+        require('core.globals')
+        require('core.lsp')
     end,
 })

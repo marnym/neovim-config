@@ -28,21 +28,8 @@ vim.keymap.set('v', '>', '>gv', opts)
 
 -- Better window navigation
 vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
-vim.keymap.set('n', '<C-j>', function()
-    if vim.bo.ft == 'starter' then
-        require('mini.starter').update_current_item('next')
-    else
-        vim.cmd('wincmd j')
-    end
-end, opts)
-vim.keymap.set('n', '<C-k>', function()
-    if vim.bo.ft == 'starter' then
-        require('mini.starter').update_current_item('prev')
-    else
-        vim.cmd('wincmd k')
-    end
-    -- add expr = true to opts
-end, opts)
+vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
+vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
 vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
 
 vim.keymap.set('n', '<C-s>', 'a<C-X><C-S>', opts)
@@ -62,10 +49,6 @@ vim.keymap.set('n', '<leader>tb', vim_cmd('Gitsigns toggle_current_line_blame'))
 vim.keymap.set('n', '<leader>th', vim_cmd('Gitsigns preview_hunk'))
 vim.keymap.set('n', '<leader>tn', vim_cmd('Gitsigns next_hunk'))
 vim.keymap.set('n', '<leader>tp', vim_cmd('Gitsigns prev_hunk'))
-vim.keymap.set('n', '<leader>pr', function()
-    vim.cmd('ProjectRoot')
-    vim.print('Set project root to ' .. vim.fn.getcwd())
-end)
 
 -- execute file
 vim.keymap.set('n', '<space>x', '<cmd>source %<CR>')

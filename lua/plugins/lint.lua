@@ -3,15 +3,6 @@ return {
         'mfussenegger/nvim-lint',
         event = 'BufEnter',
         config = function()
-            vim.diagnostic.config {
-                virtual_text = {
-                    source = true,
-                },
-                float = {
-                    source = true,
-                },
-            }
-
             local lint = require('lint')
             lint.linters_by_ft = {
                 sh = { 'shellcheck' },

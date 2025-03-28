@@ -93,11 +93,6 @@ return {
         -- config = function() require('telescope').load_extension('yaml_schema') end,
     },
     {
-        'mrcjkb/rustaceanvim',
-        version = '^4',
-        ft = 'rust',
-    },
-    {
         'folke/which-key.nvim',
         event = 'VeryLazy',
     },

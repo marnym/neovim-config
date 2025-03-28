@@ -1,85 +1,83 @@
-local set = vim.opt
-
 -- set leader key
 vim.api.nvim_set_keymap('', ' ', '', { noremap = true })
 vim.g.mapleader = ' '
 
--- add all subdirectories to path
-set.path = vim.o.path .. '**'
-
 -- line numbers default
 vim.wo.number = true
-set.relativenumber = true
+vim.o.relativenumber = true
 
 -- copy paste between vim and everything else
-set.clipboard = 'unnamedplus'
+vim.o.clipboard = 'unnamedplus'
 
 -- enable mouse
-set.mouse = 'a'
+vim.o.mouse = 'a'
 
 -- use spaces
-set.expandtab = true
+vim.o.expandtab = true
 -- number of spaces
-set.shiftwidth = 4
+vim.o.shiftwidth = 4
 -- use the value of shiftwidth
-set.softtabstop = -1
+vim.o.softtabstop = -1
 -- always use shiftwidth
-set.smarttab = true
+vim.o.smarttab = true
 
 -- enable break indent
-set.breakindent = true
+vim.o.breakindent = true
 
 -- save undo history
-set.undofile = true
+vim.o.undofile = true
+vim.o.undolevels = 10000
 
 -- disable highlight on search
-set.hlsearch = false
+vim.o.hlsearch = false
 
 -- case insensitive search
-set.ignorecase = true
-set.smartcase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 -- hide status, since status line shows it
-set.showmode = false
+vim.o.showmode = false
 
 -- keep signcolumn on
 vim.wo.signcolumn = 'yes'
 
 -- decrease update time
-set.updatetime = 1000
+vim.o.updatetime = 200
 
 -- decrease timeoutlen
-set.timeoutlen = 500
+vim.o.timeoutlen = 500
 
 -- set completeopt
-set.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menuone,noselect,popup,fuzzy'
 
-set.termguicolors = true
+vim.o.termguicolors = true
 
 -- so that `` is visible in markdown files
-set.conceallevel = 0
+vim.o.conceallevel = 0
 
 -- Enable highlighting of the current line
-set.cursorline = true
+vim.o.cursorline = true
 
 -- always keep 10 lines between cursor and top/bottom
-set.scrolloff = 10
+vim.o.scrolloff = 10
 
 -- opt.smoothscroll = true
 
 -- open splits to the right and bottom
-set.splitright = true
-set.splitbelow = true
+vim.o.splitright = true
+vim.o.splitbelow = true
 
 -- listchars
-set.list = true
-set.listchars = {
+vim.o.list = true
+vim.opt.listchars = {
     eol = '↲',
-    tab = '» ',
+    tab = '▏ ',
     trail = '·',
+    extends = '»',
+    precedes = '«',
 }
 
-set.inccommand = 'split'
+vim.o.inccommand = 'split'
 
 -- filetypes
 vim.filetype.add {
@@ -91,3 +89,15 @@ vim.filetype.add {
 }
 
 vim.wo.colorcolumn = '120'
+
+vim.diagnostic.config {
+    virtual_text = {
+        current_line = true,
+    },
+}
+
+vim.g.markdown_fenced_languages = {
+    'ts=typescript',
+}
+
+vim.g.netrw_banner = 0

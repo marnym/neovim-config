@@ -4,31 +4,33 @@ return {
         dependencies = { 'saghen/blink.cmp' },
         event = { 'BufReadPre', 'BufNewFile' },
         config = function()
-            vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-            vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-                vim.lsp.handlers.signature_help, { border = 'rounded' }
-            )
+            vim.lsp.buf.hover { border = 'rounded' }
+            vim.lsp.buf.signature_help { border = 'rounded' }
 
-            local lsp = require('lspconfig')
+            vim.api.nvim_create_autocmd('LspAttach', {
+                pattern = { '*.js', '*.jsx', '*.ts', '*.tss' },
+                callback = function(args)
+                    local bufnr = args.buf
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-            local capabilities = require('blink.cmp').get_lsp_capabilities()
+                    if client and client.name == 'denols' then
+                        local clients = vim.lsp.get_clients {
+                            bufnr = bufnr,
+                            name = 'vtsls',
+                        }
+                        for _, c in ipairs(clients) do
+                            vim.lsp.stop_client(c.id, true)
+                        end
+                    end
 
-            require('plugins.lsp.ansible').setup(lsp, capabilities)
-            require('plugins.lsp.c').setup(lsp, capabilities)
-            require('plugins.lsp.documents').setup(lsp, capabilities)
-            require('plugins.lsp.go').setup(lsp, capabilities)
-            require('plugins.lsp.html').setup(lsp, capabilities)
-            require('plugins.lsp.json').setup(lsp, capabilities)
-            require('plugins.lsp.lua').setup(lsp, capabilities)
-            require('plugins.lsp.markdown').setup(lsp, capabilities)
-            require('plugins.lsp.nix').setup(lsp, capabilities)
-            require('plugins.lsp.python').setup(lsp, capabilities)
-            require('plugins.lsp.rust').setup(lsp, capabilities)
-            require('plugins.lsp.shell').setup(lsp, capabilities)
-            require('plugins.lsp.typescript').setup(lsp, capabilities)
-            require('plugins.lsp.vue').setup(lsp, capabilities)
-            require('plugins.lsp.yaml').setup(lsp, capabilities)
-            require('plugins.lsp.zig').setup(lsp, capabilities)
+                    -- if vtsls attached, stop it if there is a denols server attached
+                    if client and client.name == 'vtsls' then
+                        if next(vim.lsp.get_clients { bufnr = bufnr, name = 'denols' }) then
+                            vim.lsp.stop_client(client.id, true)
+                        end
+                    end
+                end,
+            })
 
             vim.api.nvim_create_autocmd('LspAttach', {
                 callback = function(ev)
@@ -63,23 +65,6 @@ return {
         end,
     },
     {
-        'williamboman/mason-lspconfig.nvim',
-        lazy = true,
-        dependencies = {
-            'williamboman/mason.nvim',
-            'neovim/nvim-lspconfig',
-        },
-        opts = {
-            ui = {
-                icons = {
-                    server_installed = '✓',
-                    server_pending = '➜',
-                    server_uninstalled = '✗',
-                },
-            },
-        },
-    },
-    {
         'scalameta/nvim-metals',
         dependencies = { 'nvim-lua/plenary.nvim' },
         ft = { 'scala', 'sbt' },
@@ -102,5 +87,33 @@ return {
     },
     {
         'yioneko/nvim-vtsls',
+    },
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^5',
+        ft = 'rust',
+        config = function()
+            vim.g.rustaceanvim = {
+                server = {
+                    capabilities = require('blink.cmp').get_lsp_capabilities(),
+                    default_settings = {
+                        ['rust-analyzer'] = {
+                            cargo = {
+                                buildScripts = {
+                                    enable = true,
+                                },
+                                features = 'all',
+                            },
+                            procMacro = {
+                                enable = true,
+                            },
+                            lru = {
+                                capacity = 256,
+                            },
+                        },
+                    },
+                },
+            }
+        end,
     },
 }

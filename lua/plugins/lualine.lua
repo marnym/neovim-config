@@ -1,14 +1,16 @@
 local function attached_clients()
     local clients = vim.lsp.get_clients { bufnr = 0 }
 
-    local client_names = {}
-    for _, client in ipairs(clients) do
-        table.insert(client_names, client.name)
-    end
-
-    if #client_names == 0 then
+    if #clients == 0 then
         return ''
     end
+
+    local client_names = vim.iter(clients)
+        :map(function(client)
+            local name = client.name:gsub('language.server', 'ls')
+            return name
+        end)
+        :totable()
 
     return '  LSP: ' .. table.concat(client_names, ', ')
 end
