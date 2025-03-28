@@ -22,6 +22,6 @@ return {
             },
         },
     },
-    version = 'v0.*',
+    version = '1.*',
     opts = require('plugins.completion.config'),
 }
