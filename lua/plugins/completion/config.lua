@@ -9,11 +9,6 @@ return {
         ['<S-Tab>'] = {},
     },
 
-    appearance = {
-        use_nvim_cmp_as_default = true,
-        nerd_font_variant = 'mono',
-    },
-
     sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
         providers = {
@@ -75,8 +70,11 @@ return {
     },
 
     completion = {
-        accept = { auto_brackets = { enabled = true } },
+        accept = { auto_brackets = { enabled = false } },
+        menu = { min_width = 30 },
     },
 
     signature = { enabled = true },
+
+    cmdline = { enabled = false },
 }
