@@ -76,7 +76,6 @@ return {
                 'cssls',
                 'denols',
                 'gopls',
-                'harper_ls',
                 'html',
                 'json',
                 'lua_ls',
