@@ -91,9 +91,8 @@ vim.filetype.add {
 vim.wo.colorcolumn = '120'
 
 vim.diagnostic.config {
-    virtual_text = {
-        current_line = true,
-    },
+    virtual_text = { current_line = true },
+    severity_sort = true,
 }
 
 vim.g.markdown_fenced_languages = {
