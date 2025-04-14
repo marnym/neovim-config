@@ -12,22 +12,17 @@ return {
                 callback = function(args)
                     local bufnr = args.buf
                     local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    if not client then
+                        return
+                    end
 
-                    if client and client.name == 'denols' then
-                        local clients = vim.lsp.get_clients {
-                            bufnr = bufnr,
-                            name = 'vtsls',
-                        }
+                    if client.name == 'denols' then
+                        local clients = vim.lsp.get_clients { bufnr = bufnr, name = 'vtsls' }
                         for _, c in ipairs(clients) do
                             vim.lsp.stop_client(c.id, true)
                         end
-                    end
-
-                    -- if vtsls attached, stop it if there is a denols server attached
-                    if client and client.name == 'vtsls' then
-                        if next(vim.lsp.get_clients { bufnr = bufnr, name = 'denols' }) then
-                            vim.lsp.stop_client(client.id, true)
-                        end
+                    elseif client.name == 'vtsls' and next(vim.lsp.get_clients { bufnr = bufnr, name = 'denols' }) then
+                        vim.lsp.stop_client(client.id, true)
                     end
                 end,
             })
@@ -63,9 +58,210 @@ return {
                 end,
             })
 
+            local capabilities = require('blink.cmp').get_lsp_capabilities()
+
             vim.lsp.config('*', {
-                capabilities = require('blink.cmp').get_lsp_capabilities(),
+                capabilities = capabilities,
                 root_markers = { '.git' },
+            })
+
+            vim.lsp.config('ansiblels', {
+                cmd = { 'npx', '@ansible/ansible-language-server', '--stdio' },
+                filetypes = { 'yml', 'yaml', 'yml.ansible', 'yaml.ansible' },
+            })
+
+            local clangd_capabilities = vim.tbl_extend('force', capabilities, {
+                offsetEncoding = 'utf-8',
+            })
+            vim.lsp.config('clangd', {
+                cmd = { 'clangd', '--background-index' },
+                capabilities = clangd_capabilities,
+            })
+
+            vim.lsp.config('cssls', {
+                root_markers = { 'package.json', 'deno.json', '.git' },
+            })
+
+            vim.lsp.config('denols', {
+                root_markers = { 'deno.json', 'deno.jsonc' },
+                filetypes = { 'typescript, typescriptreact, typescript.tsx' },
+                settings = {
+                    deno = {
+                        enable = true,
+                        unstable = true,
+                        suggest = {
+                            imports = {
+                                hosts = {
+                                    ['https://deno.land'] = true,
+                                },
+                            },
+                        },
+                    },
+                },
+            })
+
+            vim.lsp.config('gopls', {
+                settings = {
+                    gopls = {
+                        experimentalPostfixCompletions = true,
+                        analyses = {
+                            unusedparams = true,
+                            shadow = true,
+                        },
+                        staticcheck = true,
+                    },
+                },
+                init_options = {
+                    usePlaceholders = true,
+                },
+            })
+
+            vim.lsp.config('harper_ls', {
+                root_markers = { '*.typ', '.git' },
+                filetypes = { 'gitcommit', 'markdown', 'typst' },
+            })
+
+            vim.lsp.config('html', {
+                root_markers = { 'package.json', 'deno.json', '.git' },
+                filetypes = { 'html', 'templ', 'eta' },
+            })
+
+            local json_capabilities = vim.tbl_extend('force', capabilities, {
+                textDocument = {
+                    completion = {
+                        completionItem = {
+                            snippetSupport = true,
+                        },
+                    },
+                },
+            })
+            vim.lsp.config('json', {
+                capabilities = json_capabilities,
+                settings = {
+                    json = {
+                        schemas = {
+                            {
+                                fileMatch = { 'package.json' },
+                                url = 'https://json.schemastore.org/package.json',
+                            },
+                            {
+                                fileMatch = { 'tsconfig.json' },
+                                url = 'https://json.schemastore.org/tsconfig.json',
+                            },
+                            {
+                                fileMatch = { 'deno.json' },
+                                url = 'https://deno.land/x/deno/cli/schemas/config-file.v1.json',
+                            },
+                        },
+                    },
+                },
+            })
+
+            vim.lsp.config('ltex_ls', {
+                cmd = { '/home/markus/dev/ltex-ls-plus/target/appassembler/bin/ltex-ls-plus' },
+                filetypes = { 'typst' },
+                settings = {
+                    ltex = {
+                        enabled = { 'typst' },
+                        checkFrequency = 'save',
+                        language = 'en-US',
+                        sentenceCacheSize = 5000,
+                    },
+                },
+            })
+
+            vim.lsp.config('lua_ls', {
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJIT',
+                        },
+                        workspace = {
+                            checkThirdParty = false,
+                            library = {
+                                vim.env.VIMRUNTIME,
+                            },
+                        },
+                        telemetry = { enable = false },
+                    },
+                },
+            })
+
+            vim.lsp.config('nil_ls', {
+                settings = {
+                    ['nil'] = {
+                        nix = {
+                            flake = {
+                                autoArchive = true,
+                            },
+                        },
+                    },
+                },
+            })
+
+            vim.lsp.config('superhtml', {
+                root_markers = { 'package.json', 'deno.json', '.git' },
+            })
+
+            vim.lsp.config('tailwindcss', {
+                cmd = { 'tailwindcss-language-server', '--stdio' },
+                filetypes = {
+                    'astro',
+                    'astro-markdown',
+                    'ejs',
+                    'eta',
+                    'gohtml',
+                    'gohtmltmpl',
+                    'handlebars',
+                    'hbs',
+                    'htmlangular',
+                    'css',
+                    'less',
+                    'postcss',
+                    'sass',
+                    'scss',
+                    'javascript',
+                    'javascriptreact',
+                    'typescript',
+                    'typescriptreact',
+                    'vue',
+                    'svelte',
+                    'templ',
+                },
+            })
+
+            vim.lsp.config('tinymist', {
+                root_markers = { 'main.typ' },
+                settings = {
+                    exportPdf = 'never',
+                    systemFonts = true,
+                    semanticTokens = 'disable',
+                    compileStatus = 'disable',
+                    dragAndDrop = 'disable',
+                    renderDocs = 'disable',
+                    previewFeature = 'disable',
+                },
+            })
+
+            local yaml_companion = require('yaml-companion')
+            local yaml_cfg = yaml_companion.setup()
+            vim.api.nvim_create_user_command('YamlSchema',
+                function()
+                    local fzf = require('fzf-lua')
+                    fzf.register_ui_select()
+                    yaml_companion.open_ui_select()
+                    fzf.deregister_ui_select()
+                end,
+                {
+                    desc = 'Select YAML schema',
+                }
+            )
+            vim.lsp.config('yamlls', yaml_cfg)
+
+            vim.lsp.config('zls', {
+                cmd = { 'zls' },
+                root_markers = { 'zls.json', 'build.zig', '.git' },
+                filetypes = { 'zig', 'zir' },
             })
 
             vim.lsp.enable {
