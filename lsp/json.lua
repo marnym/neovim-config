@@ -3,8 +3,6 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 --- @type vim.lsp.Config
 return {
-    cmd = { 'vscode-json-language-server', '--stdio' },
-    filetypes = { 'json', 'jsonc' },
     capabilities = capabilities,
     settings = {
         json = {
