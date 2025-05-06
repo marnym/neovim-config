@@ -100,3 +100,6 @@ vim.g.markdown_fenced_languages = {
 }
 
 vim.g.netrw_banner = 0
+
+-- allows setting project specific settings
+vim.o.exrc = true
