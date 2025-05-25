@@ -282,7 +282,7 @@ return {
                 'terraformls',
                 'texlab',
                 'tinymist',
-                'volar',
+                'vue_ls',
                 'vtsls',
                 'yamlls',
                 'zls',
