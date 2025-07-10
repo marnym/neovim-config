@@ -88,8 +88,10 @@ return {
     {
         'someone-stole-my-name/yaml-companion.nvim',
         lazy = true,
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        -- config = function() require('telescope').load_extension('yaml_schema') end,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'b0o/schemastore.nvim',
+        },
     },
     {
         'folke/which-key.nvim',

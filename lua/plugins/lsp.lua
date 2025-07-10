@@ -126,33 +126,13 @@ return {
                 filetypes = { 'html', 'templ', 'eta' },
             })
 
-            local json_capabilities = vim.tbl_extend('force', capabilities, {
-                textDocument = {
-                    completion = {
-                        completionItem = {
-                            snippetSupport = true,
-                        },
-                    },
-                },
-            })
-            vim.lsp.config('json', {
-                capabilities = json_capabilities,
+            local schemastore = require('schemastore')
+
+            vim.lsp.config('jsonls', {
                 settings = {
                     json = {
-                        schemas = {
-                            {
-                                fileMatch = { 'package.json' },
-                                url = 'https://json.schemastore.org/package.json',
-                            },
-                            {
-                                fileMatch = { 'tsconfig.json' },
-                                url = 'https://json.schemastore.org/tsconfig.json',
-                            },
-                            {
-                                fileMatch = { 'deno.json' },
-                                url = 'https://deno.land/x/deno/cli/schemas/config-file.v1.json',
-                            },
-                        },
+                        schemas = schemastore.json.schemas(),
+                        validate = { enable = true },
                     },
                 },
             })
@@ -204,7 +184,7 @@ return {
             })
 
             vim.lsp.config('tailwindcss', {
-                cmd = { 'tailwindcss-language-server', '--stdio' },
+                cmd = { 'npx', '@tailwindcss/language-server', '--stdio' },
                 filetypes = {
                     'astro',
                     'astro-markdown',
@@ -243,8 +223,39 @@ return {
                 },
             })
 
+            vim.lsp.config('vtsls', {
+                settings = {
+                    typescript = {
+                        tsdk = './.yarn/sdks/typescript/lib',
+                    },
+                    vtsls = {
+                        autoUseWorkspaceTsdk = true,
+                        javascript = {
+                            format = {
+                                enable = false,
+                            },
+                        },
+                        typescript = {
+                            format = {
+                                enable = false,
+                            },
+                        },
+                    },
+                },
+            })
+
             local yaml_companion = require('yaml-companion')
-            local yaml_cfg = yaml_companion.setup()
+            local yaml_cfg = yaml_companion.setup {
+                settings = {
+                    yaml = {
+                        schemaStore = {
+                            enable = false,
+                            url = '',
+                        },
+                        schemas = schemastore.yaml.schemas(),
+                    },
+                },
+            }
             vim.api.nvim_create_user_command('YamlSchema',
                 function()
                     local fzf = require('fzf-lua')
@@ -273,7 +284,7 @@ return {
                 'denols',
                 'gopls',
                 'html',
-                'json',
+                'jsonls',
                 'lua_ls',
                 'marksman',
                 'nil_ls',
