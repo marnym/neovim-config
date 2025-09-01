@@ -120,13 +120,13 @@ return {
     },
     -- mini.nvim
     {
-        'echasnovski/mini.surround',
+        'nvim-mini/mini.surround',
         version = false,
         event = 'BufEnter',
         config = function() require('mini.surround').setup() end,
     },
     {
-        'echasnovski/mini.files',
+        'nvim-mini/mini.files',
         version = false,
         config = function()
             require('mini.files').setup {
@@ -141,7 +141,7 @@ return {
         },
     },
     {
-        'echasnovski/mini.pairs',
+        'nvim-mini/mini.pairs',
         version = false,
         event = 'InsertEnter',
         config = function() require('mini.pairs').setup() end,
