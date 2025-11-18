@@ -30,5 +30,6 @@ vim.api.nvim_create_autocmd('User', {
     callback = function()
         require('core.binds')
         require('core.globals')
+        require('core.auto')
     end,
 })
