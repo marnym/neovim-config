@@ -117,6 +117,11 @@ return {
         keys = {
             { '<Leader>n', function() vim.cmd [[Neotree toggle]] end },
         },
+        opts = {
+            window = {
+                position = 'right',
+            },
+        },
     },
     -- mini.nvim
     {
