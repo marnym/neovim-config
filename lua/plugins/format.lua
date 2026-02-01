@@ -78,5 +78,8 @@ require('conform').setup {
     end,
 }
 
-vim.keymap.set('n', '<leader>fo', function() require('conform').format { async = true, lsp_format = 'fallback' } end,
-    { desc = '[FO]rmat buffer' })
+vim.keymap.set('n',
+    '<leader>w',
+    function() require('conform').format { async = true, lsp_format = 'fallback' } end,
+    { desc = 'Format buffer' }
+)
