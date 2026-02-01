@@ -17,3 +17,49 @@ vim.pack.add {
         version = 'main',
     },
 }
+
+require(ts).install {
+    'bash',
+    'c',
+    'dockerfile',
+    'fish',
+    'git_config',
+    'git_rebase',
+    'gitattributes',
+    'gitcommit',
+    'gitignore',
+    'go',
+    'gomod',
+    'gosum',
+    'html',
+    'javascript',
+    'json',
+    'just',
+    'kotlin',
+    'lua',
+    'make',
+    'markdown',
+    'nix',
+    'python',
+    'rust',
+    'scala',
+    'sql',
+    'toml',
+    'tsx',
+    'typescript',
+    'typst',
+    'vim',
+    'yaml',
+    'zig',
+}
+
+vim.api.nvim_create_autocmd('FileType', {
+    callback = function(ev)
+        local ft = ev.match
+        local lang = vim.treesitter.language.get_lang(ft)
+        if vim.treesitter.language.add(lang) then
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            vim.treesitter.start()
+        end
+    end,
+})
