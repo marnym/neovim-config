@@ -54,3 +54,6 @@ vim.keymap.set('n', '<leader>tp', vim_cmd('Gitsigns prev_hunk'))
 vim.keymap.set('n', '<space>x', '<cmd>source %<CR>')
 -- execute selected
 vim.keymap.set('v', '<space>x', ':lua<CR>')
+
+vim.keymap.set('n', 'gp', vim.diagnostic.goto_prev, { desc = '[G]o to [P]revious diagnostic' })
+vim.keymap.set('n', 'gn', vim.diagnostic.goto_next, { desc = '[G]o to [N]ext diagnostic' })
