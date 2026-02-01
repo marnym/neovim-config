@@ -1,5 +1,6 @@
 require('core.options')
 require('core.binds')
-require('core.globals')
 require('core.auto')
+require('core.globals')
+require('core.lsp')
 require('plugins')

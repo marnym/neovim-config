@@ -1,4 +1,4 @@
--- set leader key
+-- set leader key, this is configured here instead of binds because this is loaded first
 vim.api.nvim_set_keymap('', ' ', '', { noremap = true })
 vim.g.mapleader = ' '
 
