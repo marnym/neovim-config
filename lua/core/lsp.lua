@@ -8,6 +8,7 @@ vim.lsp.enable {
     'clangd',
     'cssls',
     'denols',
+    'fish_lsp',
     'gopls',
     'harper_ls',
     'html',
