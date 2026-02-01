@@ -1,2 +1,5 @@
 require('core.options')
-require('core.lazy')
+require('core.binds')
+require('core.globals')
+require('core.auto')
+require('plugins')

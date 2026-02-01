@@ -1,6 +1,22 @@
---- @module 'blink.cmp'
---- @type blink.cmp.Config
-return {
+-- Need to ensure that LazyDev is installed
+require('plugins.lsp.neovim')
+
+vim.pack.add {
+    {
+        src = 'https://github.com/saghen/blink.cmp',
+        version = vim.version.range('v1.*'),
+    },
+    'https://github.com/rafamadriz/friendly-snippets',
+    {
+        src = 'https://github.com/L3MON4D3/LuaSnip',
+        version = vim.version.range('v2.*'),
+    },
+}
+
+require('luasnip.loaders.from_vscode').lazy_load()
+require('luasnip.loaders.from_vscode').lazy_load { paths = './snippets' }
+
+require('blink.cmp').setup {
     keymap = {
         preset = 'enter',
         ['<C-k>'] = { 'select_prev' },
@@ -10,9 +26,8 @@ return {
         ['<Tab>'] = {},
         ['<S-Tab>'] = {},
     },
-
     sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev', 'buffer' },
         providers = {
             lsp = { name = 'LSP', fallbacks = { 'buffer' } },
             lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', fallbacks = { 'lsp' } },
@@ -58,7 +73,6 @@ return {
             },
         },
     },
-
     snippets = {
         preset = 'luasnip',
         expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
@@ -70,13 +84,10 @@ return {
         end,
         jump = function(direction) require('luasnip').jump(direction) end,
     },
-
     completion = {
         accept = { auto_brackets = { enabled = false } },
         menu = { min_width = 30 },
     },
-
     signature = { enabled = true },
-
     cmdline = { enabled = false },
 }

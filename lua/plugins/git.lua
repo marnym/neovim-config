@@ -1,30 +1,27 @@
-return {
+vim.pack.add {
     {
-        'lewis6991/gitsigns.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' },
-        event = 'BufEnter',
-        opts = {
-            signs = {
-                add = { text = '+' },
-                change = { text = '~' },
-                delete = { text = '_' },
-                topdelete = { text = '‾' },
-                changedelete = { text = '~' },
-            },
-            on_attach = function(bufnr)
-                vim.keymap.set('n', '<leader>gp', function() require('gitsigns').nav_hunk('prev') end,
-                    { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-
-                vim.keymap.set('n', '<leader>gn', function() require('gitsigns').nav_hunk('next') end,
-                    { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-
-                vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk,
-                    { buffer = bufnr, desc = '[P]review [H]unk' })
-            end,
-        },
+        src = 'https://github.com/lewis6991/gitsigns.nvim',
+        version = vim.version.range('v2.*'),
     },
-    {
-        'sindrets/diffview.nvim',
-        event = 'VeryLazy',
+    'https://github.com/sindrets/diffview.nvim',
+}
+
+require('gitsigns').setup {
+    signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
     },
+    on_attach = function(bufnr)
+        vim.keymap.set('n', '<leader>gp', function() require('gitsigns').nav_hunk('prev') end,
+            { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+
+        vim.keymap.set('n', '<leader>gn', function() require('gitsigns').nav_hunk('next') end,
+            { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+
+        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk,
+            { buffer = bufnr, desc = '[P]review [H]unk' })
+    end,
 }
