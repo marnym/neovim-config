@@ -6,7 +6,9 @@ vim.pack.add {
     'https://github.com/sindrets/diffview.nvim',
 }
 
-require('gitsigns').setup {
+local gs = require('gitsigns')
+
+gs.setup {
     signs = {
         add = { text = '+' },
         change = { text = '~' },
@@ -15,13 +17,28 @@ require('gitsigns').setup {
         changedelete = { text = '~' },
     },
     on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', function() require('gitsigns').nav_hunk('prev') end,
-            { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n',
+            'gsp',
+            function() gs.nav_hunk('prev') end,
+            { buffer = bufnr, desc = 'Go to [P]revious hunk' }
+        )
 
-        vim.keymap.set('n', '<leader>gn', function() require('gitsigns').nav_hunk('next') end,
-            { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+        vim.keymap.set('n',
+            'gsn',
+            function() gs.nav_hunk('next') end,
+            { buffer = bufnr, desc = 'Go to [N]ext hunk' }
+        )
 
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk,
-            { buffer = bufnr, desc = '[P]review [H]unk' })
+        vim.keymap.set('n',
+            'gss',
+            gs.preview_hunk,
+            { buffer = bufnr, desc = 'Preview hunk' }
+        )
+
+        vim.keymap.set('n',
+            'gsb',
+            gs.toggle_current_line_blame,
+            { buffer = bufnr, desc = 'Toggle line [B]lame' }
+        )
     end,
 }

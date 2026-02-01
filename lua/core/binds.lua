@@ -44,12 +44,6 @@ vim.keymap.set('t', '<C-space>', '<C-\\><C-n>', opts)
 vim.keymap.set('n', 'zp', '[s', opts)
 vim.keymap.set('n', 'zn', ']s', opts)
 
--- Plugins
-vim.keymap.set('n', '<leader>tb', vim_cmd('Gitsigns toggle_current_line_blame'))
-vim.keymap.set('n', '<leader>th', vim_cmd('Gitsigns preview_hunk'))
-vim.keymap.set('n', '<leader>tn', vim_cmd('Gitsigns next_hunk'))
-vim.keymap.set('n', '<leader>tp', vim_cmd('Gitsigns prev_hunk'))
-
 -- execute file
 vim.keymap.set('n', '<space>x', '<cmd>source %<CR>')
 -- execute selected
