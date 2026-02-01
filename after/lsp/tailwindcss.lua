@@ -1,6 +1,5 @@
 --- @type vim.lsp.Config
 return {
-    cmd = { 'npx', '@tailwindcss/language-server', '--stdio' },
     filetypes = {
         'astro',
         'astro-markdown',
