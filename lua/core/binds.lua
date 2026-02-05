@@ -50,5 +50,9 @@ keymap('n', '<space>x', '<cmd>source %<CR>')
 -- execute selected
 keymap('v', '<space>x', ':lua<CR>')
 
-keymap('n', 'gp', function() vim.diagnostic.jump { count = -1 } end, { desc = '[G]o to [P]revious diagnostic' })
-keymap('n', 'gn', function() vim.diagnostic.jump { count = 1 } end, { desc = '[G]o to [N]ext diagnostic' })
+keymap('n', 'gp',
+    function() vim.diagnostic.jump { count = -1, float = true } end,
+    { desc = '[G]o to [P]revious diagnostic' })
+keymap('n', 'gn',
+    function() vim.diagnostic.jump { count = 1, float = true } end,
+    { desc = '[G]o to [N]ext diagnostic' })
