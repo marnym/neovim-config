@@ -1,3 +1,4 @@
+local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 local function vim_cmd(cmd)
@@ -7,47 +8,47 @@ local function vim_cmd(cmd)
 end
 
 -- move by line
-vim.keymap.set('n', 'j', 'gj', opts)
-vim.keymap.set('n', 'k', 'gk', opts)
+keymap('n', 'j', 'gj', opts)
+keymap('n', 'k', 'gk', opts)
 
 -- Use alt + hjkl to resize windows
-vim.keymap.set('n', '<M-j>', vim_cmd('resize -2'), opts)
-vim.keymap.set('n', '<M-k>', vim_cmd('resize +2'), opts)
-vim.keymap.set('n', '<M-h>', vim_cmd('vertical resize -2'), opts)
-vim.keymap.set('n', '<M-l>', vim_cmd('vertical resize +2'), opts)
+keymap('n', '<M-j>', vim_cmd('resize -2'), opts)
+keymap('n', '<M-k>', vim_cmd('resize +2'), opts)
+keymap('n', '<M-h>', vim_cmd('vertical resize -2'), opts)
+keymap('n', '<M-l>', vim_cmd('vertical resize +2'), opts)
 
-vim.keymap.set('i', 'jk', '<Esc>', opts)
-vim.keymap.set('i', 'kj', '<Esc>', opts)
+keymap('i', 'jk', '<Esc>', opts)
+keymap('i', 'kj', '<Esc>', opts)
 
 -- SHIFT-TAB to de-tab
-vim.keymap.set('i', '<S-TAB>', '<C-d>', opts)
+keymap('i', '<S-TAB>', '<C-d>', opts)
 
 -- Better tabbing
-vim.keymap.set('v', '<', '<gv', opts)
-vim.keymap.set('v', '>', '>gv', opts)
+keymap('v', '<', '<gv', opts)
+keymap('v', '>', '>gv', opts)
 
 -- Better window navigation
-vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
-vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
-vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
-vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
+keymap('n', '<C-h>', '<C-w>h', opts)
+keymap('n', '<C-j>', '<C-w>j', opts)
+keymap('n', '<C-k>', '<C-w>k', opts)
+keymap('n', '<C-l>', '<C-w>l', opts)
 
-vim.keymap.set('n', '<C-s>', 'a<C-X><C-S>', opts)
+keymap('n', '<C-s>', 'a<C-X><C-S>', opts)
 
 -- bufdelete
-vim.keymap.set('n', '<leader>bd', vim_cmd('bwipeout!'), opts)
+keymap('n', '<leader>bd', vim_cmd('bwipeout!'), opts)
 
 -- exit terminal mode
-vim.keymap.set('t', '<C-space>', '<C-\\><C-n>', opts)
+keymap('t', '<C-space>', '<C-\\><C-n>', opts)
 
 -- spell
-vim.keymap.set('n', 'zp', '[s', opts)
-vim.keymap.set('n', 'zn', ']s', opts)
+keymap('n', 'zp', '[s', opts)
+keymap('n', 'zn', ']s', opts)
 
 -- execute file
-vim.keymap.set('n', '<space>x', '<cmd>source %<CR>')
+keymap('n', '<space>x', '<cmd>source %<CR>')
 -- execute selected
-vim.keymap.set('v', '<space>x', ':lua<CR>')
+keymap('v', '<space>x', ':lua<CR>')
 
-vim.keymap.set('n', 'gp', function() vim.diagnostic.jump { count = -1 } end, { desc = '[G]o to [P]revious diagnostic' })
-vim.keymap.set('n', 'gn', function() vim.diagnostic.jump { count = 1 } end, { desc = '[G]o to [N]ext diagnostic' })
+keymap('n', 'gp', function() vim.diagnostic.jump { count = -1 } end, { desc = '[G]o to [P]revious diagnostic' })
+keymap('n', 'gn', function() vim.diagnostic.jump { count = 1 } end, { desc = '[G]o to [N]ext diagnostic' })
