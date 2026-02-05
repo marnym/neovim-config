@@ -49,5 +49,5 @@ vim.keymap.set('n', '<space>x', '<cmd>source %<CR>')
 -- execute selected
 vim.keymap.set('v', '<space>x', ':lua<CR>')
 
-vim.keymap.set('n', 'gp', vim.diagnostic.goto_prev, { desc = '[G]o to [P]revious diagnostic' })
-vim.keymap.set('n', 'gn', vim.diagnostic.goto_next, { desc = '[G]o to [N]ext diagnostic' })
+vim.keymap.set('n', 'gp', function() vim.diagnostic.jump { count = -1 } end, { desc = '[G]o to [P]revious diagnostic' })
+vim.keymap.set('n', 'gn', function() vim.diagnostic.jump { count = 1 } end, { desc = '[G]o to [N]ext diagnostic' })
