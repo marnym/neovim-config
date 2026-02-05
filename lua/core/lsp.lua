@@ -10,7 +10,6 @@ vim.lsp.enable {
     'denols',
     'fish_lsp',
     'gopls',
-    'harper_ls',
     'html',
     'jsonls',
     'julials',
