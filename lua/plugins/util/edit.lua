@@ -6,3 +6,4 @@ vim.pack.add {
 
 require('mini.surround').setup()
 require('mini.pairs').setup()
+require('nvim-ts-autotag').setup()
