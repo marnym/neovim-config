@@ -6,6 +6,14 @@ vim.pack.add {
     'https://github.com/sindrets/diffview.nvim',
 }
 
+require('diffview').setup {
+    view = {
+        merge_tool = {
+            layout = 'diff3_mixed',
+        },
+    },
+}
+
 vim.opt.diffopt = {
     'internal',
     'filler',
