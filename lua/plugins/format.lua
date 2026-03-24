@@ -45,7 +45,7 @@ require('conform').setup {
             prepend_args = { '--column', '120' },
         },
         deno_fmt = {
-            append_args = { '--line-width=120' },
+            append_args = { '--line-width=120', '--no-semicolons=true' },
         },
     },
     formatters_by_ft = {
