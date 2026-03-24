@@ -9,7 +9,7 @@ vim.g.gruvbox_material_better_performance = 1
 vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
 
 local group = vim.api.nvim_create_augroup('GruvboxMaterialCustom', { clear = true })
-vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
+vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = 'gruvbox-material',
     group = group,
     callback = function()
@@ -24,3 +24,31 @@ vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
 })
 
 vim.cmd('colorscheme gruvbox-material')
+
+---@param msg string
+local function log(msg)
+    vim.notify('[color-scheme]' .. msg, vim.log.levels.INFO)
+end
+
+
+vim.api.nvim_create_autocmd('Signal', {
+    pattern = 'SIGUSR1',
+    callback = function()
+        local res = vim.system({ 'dconf', 'read', '/org/gnome/desktop/interface/color-scheme' }, { text = true }):wait(1000)
+        local mode = res.stdout
+        if not mode then
+            return log('failed to get mode')
+        end
+
+        if mode:match('dark') then
+            vim.opt.background = 'dark'
+        elseif mode:match('light') then
+            vim.opt.background = 'light'
+        else
+            log(string.format('unknown color mode: %q', mode))
+        end
+
+        -- Required to reload lualine.
+        require('lualine').setup {}
+    end,
+})
