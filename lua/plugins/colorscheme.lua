@@ -30,25 +30,37 @@ local function log(msg)
     vim.notify('[color-scheme]' .. msg, vim.log.levels.INFO)
 end
 
+---@return 'dark' | 'light' | nil
+local function read_scheme()
+    local res = vim.system({ 'dconf', 'read', '/org/gnome/desktop/interface/color-scheme' }, { text = true }):wait(1000)
+    local mode = res.stdout
+    if not mode then
+        return log('failed to get color scheme')
+    end
+
+    if mode:match('dark') then
+        return 'dark'
+    elseif mode:match('light') then
+        return 'light'
+    else
+        log(string.format('unknown color mode: %q', mode))
+    end
+end
+
 
 vim.api.nvim_create_autocmd('Signal', {
     pattern = 'SIGUSR1',
     callback = function()
-        local res = vim.system({ 'dconf', 'read', '/org/gnome/desktop/interface/color-scheme' }, { text = true }):wait(1000)
-        local mode = res.stdout
-        if not mode then
-            return log('failed to get mode')
+        local scheme = read_scheme()
+        if scheme then
+            vim.opt.background = scheme
+            -- Required to reload lualine.
+            require('lualine').setup {}
         end
-
-        if mode:match('dark') then
-            vim.opt.background = 'dark'
-        elseif mode:match('light') then
-            vim.opt.background = 'light'
-        else
-            log(string.format('unknown color mode: %q', mode))
-        end
-
-        -- Required to reload lualine.
-        require('lualine').setup {}
     end,
 })
+
+local scheme = read_scheme()
+if scheme then
+    vim.opt.background = scheme
+end
