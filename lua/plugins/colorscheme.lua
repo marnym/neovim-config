@@ -32,6 +32,11 @@ end
 
 ---@return 'dark' | 'light' | nil
 local function read_scheme()
+    local is_linux = vim.uv.os_uname().sysname == 'Linux'
+    if not is_linux then
+        return
+    end
+
     local res = vim.system({ 'dconf', 'read', '/org/gnome/desktop/interface/color-scheme' }, { text = true }):wait(1000)
     local mode = res.stdout
     if not mode then
