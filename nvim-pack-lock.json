@@ -48,10 +48,6 @@
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
     },
-    "lualine.nvim": {
-      "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
-      "src": "https://github.com/hoob3rt/lualine.nvim"
-    },
     "luvit-meta": {
       "rev": "cc9b2d412d2fbd30b94a70cfc214c2a3be27a0a2",
       "src": "https://github.com/Bilal2453/luvit-meta"
@@ -67,6 +63,10 @@
     "mini.pairs": {
       "rev": "b7fde3719340946feb75017ef9d75edebdeb0566",
       "src": "https://github.com/nvim-mini/mini.pairs"
+    },
+    "mini.statusline": {
+      "rev": "8c3829d4ef02b693f68e43fc131b433f11049b2b",
+      "src": "https://github.com/nvim-mini/mini.statusline"
     },
     "mini.surround": {
       "rev": "d205d1741d1fcc1f3117b4e839bf00f74ad72fa2",
