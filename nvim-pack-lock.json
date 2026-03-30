@@ -31,10 +31,6 @@
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
-    "fzf-lua": {
-      "rev": "8a79ee54d6216d10b2f153921a12b152be0c1a20",
-      "src": "https://github.com/ibhagwan/fzf-lua"
-    },
     "gitsigns.nvim": {
       "rev": "42d6aed4e94e0f0bbced16bbdcc42f57673bd75e",
       "src": "https://github.com/lewis6991/gitsigns.nvim",
@@ -52,6 +48,10 @@
       "rev": "cc9b2d412d2fbd30b94a70cfc214c2a3be27a0a2",
       "src": "https://github.com/Bilal2453/luvit-meta"
     },
+    "mini.extra": {
+      "rev": "0ccc67319240cf8712f5f614db50c262eccd9db3",
+      "src": "https://github.com/nvim-mini/mini.extra"
+    },
     "mini.files": {
       "rev": "b4796e09eb103f9f2d1e00aa2dab3753b879b17b",
       "src": "https://github.com/nvim-mini/mini.files"
@@ -63,6 +63,10 @@
     "mini.pairs": {
       "rev": "b7fde3719340946feb75017ef9d75edebdeb0566",
       "src": "https://github.com/nvim-mini/mini.pairs"
+    },
+    "mini.pick": {
+      "rev": "fe079c2bd894a5ee70b62f23d819620ef40c4949",
+      "src": "https://github.com/nvim-mini/mini.pick"
     },
     "mini.statusline": {
       "rev": "8c3829d4ef02b693f68e43fc131b433f11049b2b",
