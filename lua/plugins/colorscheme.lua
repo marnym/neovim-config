@@ -54,8 +54,6 @@ vim.api.nvim_create_autocmd('Signal', {
         local scheme = read_scheme()
         if scheme then
             vim.opt.background = scheme
-            -- Required to reload lualine.
-            require('lualine').setup {}
         end
     end,
 })
