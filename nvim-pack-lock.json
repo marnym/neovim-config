@@ -1,12 +1,12 @@
 {
   "plugins": {
     "LuaSnip": {
-      "rev": "5a1e39223db9a0498024a77b8441169d260c8c25",
+      "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
       "src": "https://github.com/L3MON4D3/LuaSnip",
       "version": "2.0.0 - 3.0.0"
     },
     "SchemaStore.nvim": {
-      "rev": "66e53f3316515ac8548b47826f8d273955aa7af1",
+      "rev": "6d0329adb9c8cbe51b9a28299890a5eb104db7dc",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "arrow.nvim": {
@@ -14,7 +14,7 @@
       "src": "https://github.com/otavioschwanck/arrow.nvim"
     },
     "blink.cmp": {
-      "rev": "451168851e8e2466bc97ee3e026c3dcb9141ce07",
+      "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
     },
@@ -32,12 +32,12 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
-      "rev": "42d6aed4e94e0f0bbced16bbdcc42f57673bd75e",
+      "rev": "a462f416e2ce4744531c6256252dee99a7d34a83",
       "src": "https://github.com/lewis6991/gitsigns.nvim",
       "version": "2.0.0 - 3.0.0"
     },
     "gruvbox-material": {
-      "rev": "790afe9dd085aa04eccd1da3626c5fa05c620e53",
+      "rev": "afb275d8e6dc379762d122bd24e1773fc057abf3",
       "src": "https://github.com/sainnhe/gruvbox-material"
     },
     "lazydev.nvim": {
@@ -49,35 +49,35 @@
       "src": "https://github.com/Bilal2453/luvit-meta"
     },
     "mini.extra": {
-      "rev": "0ccc67319240cf8712f5f614db50c262eccd9db3",
+      "rev": "ca1932c95c6e757c06d2cc133b87835a01d909dd",
       "src": "https://github.com/nvim-mini/mini.extra"
     },
     "mini.files": {
-      "rev": "b4796e09eb103f9f2d1e00aa2dab3753b879b17b",
+      "rev": "ced297546b8fdb8e215d416d4753a735514a2fe0",
       "src": "https://github.com/nvim-mini/mini.files"
     },
     "mini.indentscope": {
-      "rev": "065c7713fb4cd0124fe1462f15f27feeb8b04406",
+      "rev": "e0601f75aa5137a5a13bb92a988c9a300f5bd3de",
       "src": "https://github.com/nvim-mini/mini.indentscope"
     },
     "mini.pairs": {
-      "rev": "b7fde3719340946feb75017ef9d75edebdeb0566",
+      "rev": "42387c7fe68fc0b6e95eaf37f1bb76e7bffaa0d9",
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "mini.pick": {
-      "rev": "fe079c2bd894a5ee70b62f23d819620ef40c4949",
+      "rev": "fd7e7efadddcec3f3d7f3b363a99aa44e7286c65",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
     "mini.statusline": {
-      "rev": "8c3829d4ef02b693f68e43fc131b433f11049b2b",
+      "rev": "b456bfe845e475e9cec065b7a9a1ef657ad2f41b",
       "src": "https://github.com/nvim-mini/mini.statusline"
     },
     "mini.surround": {
-      "rev": "d205d1741d1fcc1f3117b4e839bf00f74ad72fa2",
+      "rev": "2715e04bea3ec9244f15b421dc5b18c0fe326210",
       "src": "https://github.com/nvim-mini/mini.surround"
     },
     "neo-tree.nvim": {
-      "rev": "ba6871d15528e36657d19a3112cc1697c59da19a",
+      "rev": "84c75e7a7e443586f60508d12fc50f90d9aee14e",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
       "version": "3.0.0 - 4.0.0"
     },
@@ -86,7 +86,7 @@
       "src": "https://github.com/MunifTanjim/nui.nvim"
     },
     "nvim-lint": {
-      "rev": "606b823a57b027502a9ae00978ebf4f5d5158098",
+      "rev": "4b03656c09c1561f89b6aa0665c15d292ba9499d",
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
@@ -99,7 +99,7 @@
       "src": "https://github.com/scalameta/nvim-metals"
     },
     "nvim-treesitter": {
-      "rev": "6620ae1c44dfa8623b22d0cbf873a9e8d073b849",
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -108,7 +108,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "nvim-web-devicons": {
-      "rev": "d7462543c9e366c0d196c7f67a945eaaf5d99414",
+      "rev": "95b7a002d5dba1a42eb58f5fac5c565a485eefd0",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "plenary.nvim": {
