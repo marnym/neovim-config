@@ -103,3 +103,6 @@ vim.g.netrw_banner = 0
 
 -- allows setting project specific settings
 vim.o.exrc = true
+
+-- Enable experimental UI.
+require('vim._core.ui2').enable {}
