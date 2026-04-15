@@ -41,14 +41,11 @@ vim.o.showmode = false
 -- keep signcolumn on
 vim.wo.signcolumn = 'yes'
 
--- decrease update time
-vim.o.updatetime = 200
+-- Time in milliseconds of inactivity before calling CursorHold or writing to swap.
+vim.o.updatetime = 4000
 
 -- decrease timeoutlen
 vim.o.timeoutlen = 500
-
--- set completeopt
-vim.o.completeopt = 'menuone,noselect,popup,fuzzy'
 
 vim.o.termguicolors = true
 
@@ -76,6 +73,8 @@ vim.opt.listchars = {
     extends = '»',
     precedes = '«',
 }
+
+vim.o.winborder = 'rounded'
 
 vim.o.inccommand = 'split'
 

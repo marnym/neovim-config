@@ -86,7 +86,14 @@ require('blink.cmp').setup {
     },
     completion = {
         accept = { auto_brackets = { enabled = false } },
-        menu = { min_width = 30 },
+        menu = {
+            min_width = 50,
+            draw = { gap = 2 },
+        },
+        documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 200,
+        },
     },
     signature = { enabled = true },
     cmdline = { enabled = false },
