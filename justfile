@@ -1,3 +1,6 @@
+_default:
+    just --list
+
 # update plugins
 update:
   nvim -c "lua vim.pack.update()"
