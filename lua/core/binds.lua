@@ -1,19 +1,13 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-local function vim_cmd(cmd)
-    return function()
-        return vim.cmd(cmd)
-    end
-end
-
 -- move by line
 keymap('n', 'j', 'gj', opts)
 keymap('n', 'k', 'gk', opts)
 
 -- Alt+j/k for quickfix
-keymap('n', '<M-j>', '<Cmd>cnext<CR>', opts)
-keymap('n', '<M-k>', '<Cmd>cprev<CR>', opts)
+keymap('n', '<M-j>', '<cmd>cnext<cr>', opts)
+keymap('n', '<M-k>', '<cmd>cprev<cr>', opts)
 
 -- SHIFT-TAB to de-tab
 keymap('i', '<S-TAB>', '<C-d>', opts)
@@ -31,10 +25,10 @@ keymap('n', '<C-l>', '<C-w>l', opts)
 keymap('n', '<C-s>', 'a<C-X><C-S>', opts)
 
 -- bufdelete
-keymap('n', '<leader>bd', vim_cmd('bwipeout!'), opts)
+keymap('n', '<leader>bd', '<cmd>bwipeout!<cr>', opts)
 
 -- exit terminal mode
-keymap('t', '<C-space>', '<C-\\><C-n>', opts)
+keymap('t', '<esc><esc>', '<C-\\><C-n>', opts)
 
 -- spell
 keymap('n', 'zp', '[s', opts)
