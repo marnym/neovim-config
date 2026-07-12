@@ -36,25 +36,25 @@ gs.setup {
     },
     on_attach = function(bufnr)
         vim.keymap.set('n',
-            'gsp',
+            'ghp',
             function() gs.nav_hunk('prev') end,
             { buffer = bufnr, desc = 'Go to [P]revious hunk' }
         )
 
         vim.keymap.set('n',
-            'gsn',
+            'ghn',
             function() gs.nav_hunk('next') end,
             { buffer = bufnr, desc = 'Go to [N]ext hunk' }
         )
 
         vim.keymap.set('n',
-            'gss',
+            'ghh',
             gs.preview_hunk,
-            { buffer = bufnr, desc = 'Preview hunk' }
+            { buffer = bufnr, desc = 'Preview [H]unk' }
         )
 
         vim.keymap.set('n',
-            'gsb',
+            'ghb',
             gs.toggle_current_line_blame,
             { buffer = bufnr, desc = 'Toggle line [B]lame' }
         )
