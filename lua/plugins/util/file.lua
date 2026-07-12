@@ -4,9 +4,12 @@ vim.pack.add {
         version = vim.version.range('3.*'),
     },
     'https://github.com/nvim-lua/plenary.nvim',
-    'https://github.com/nvim-tree/nvim-web-devicons',
+    'https://github.com/nvim-mini/mini.icons',
     'https://github.com/MunifTanjim/nui.nvim',
 }
+
+require('mini.icons').setup()
+MiniIcons.mock_nvim_web_devicons()
 
 vim.keymap.set('n', '<leader>n', function() vim.cmd [[Neotree toggle]] end, { desc = '[N]eoTree toggle' })
 

@@ -56,6 +56,10 @@
       "rev": "057c16f0cafe59c9e1bf9d894723d6ae074b76fd",
       "src": "https://github.com/nvim-mini/mini.files"
     },
+    "mini.icons": {
+      "rev": "98faae31e9be1cc054ae63485e58ceb185efcad0",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
     "mini.indentscope": {
       "rev": "942bc13ccc624c825b086373b8bd6787b98245c8",
       "src": "https://github.com/nvim-mini/mini.indentscope"
