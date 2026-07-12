@@ -11,14 +11,9 @@ end
 keymap('n', 'j', 'gj', opts)
 keymap('n', 'k', 'gk', opts)
 
--- Use alt + hjkl to resize windows
-keymap('n', '<M-j>', vim_cmd('resize -2'), opts)
-keymap('n', '<M-k>', vim_cmd('resize +2'), opts)
-keymap('n', '<M-h>', vim_cmd('vertical resize -2'), opts)
-keymap('n', '<M-l>', vim_cmd('vertical resize +2'), opts)
-
-keymap('i', 'jk', '<Esc>', opts)
-keymap('i', 'kj', '<Esc>', opts)
+-- Alt+j/k for quickfix
+keymap('n', '<M-j>', '<Cmd>cnext<CR>', opts)
+keymap('n', '<M-k>', '<Cmd>cprev<CR>', opts)
 
 -- SHIFT-TAB to de-tab
 keymap('i', '<S-TAB>', '<C-d>', opts)
