@@ -1,6 +1,11 @@
 -- set leader key, this is configured here instead of binds because this is loaded first
-vim.api.nvim_set_keymap('', ' ', '', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
+
+-- disable folding
+vim.opt.foldenable = false
+vim.opt.foldmethod = 'manual'
+vim.opt.foldlevelstart = 99
 
 -- line numbers default
 vim.wo.number = true
@@ -100,7 +105,7 @@ vim.filetype.add {
     },
 }
 
-vim.wo.colorcolumn = '120'
+vim.wo.colorcolumn = '80'
 
 vim.diagnostic.config {
     virtual_text = { current_line = true },
@@ -116,5 +121,11 @@ vim.g.netrw_banner = 0
 -- allows setting project specific settings
 vim.o.exrc = true
 
--- Enable experimental UI.
+-- enable experimental UI
 require('vim._core.ui2').enable {}
+
+-- highlight on yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+    pattern = '*',
+    command = 'silent! lua vim.highlight.on_yank({ timeout = 500 })',
+})

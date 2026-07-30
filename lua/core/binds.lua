@@ -34,6 +34,17 @@ keymap('t', '<esc><esc>', '<C-\\><C-n>', opts)
 keymap('n', 'zp', '[s', opts)
 keymap('n', 'zn', ']s', opts)
 
+-- center search results
+keymap('n', 'n', 'nzz', opts)
+keymap('n', 'N', 'Nzz', opts)
+keymap('n', '*', '*zz', opts)
+keymap('n', '#', '#zz', opts)
+keymap('n', 'g*', 'g*zz', opts)
+
+-- enable "very magic" by default
+keymap('n', '?', '?\\v')
+keymap('n', '/', '/\\v')
+
 -- execute file
 keymap('n', '<space>x', '<cmd>source %<CR>')
 -- execute selected
