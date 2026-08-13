@@ -16,6 +16,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         local palette = vim.api.nvim_call_function('gruvbox_material#get_palette',
             { vim.g.gruvbox_material_background, vim.g.gruvbox_material_foreground, vim.api.nvim_eval('{}') })
 
+        local comment = vim.tbl_extend('force', vim.api.nvim_get_hl(0, { name = 'Comment' }), { fg = palette.orange[1] })
+        vim.api.nvim_set_hl(0, 'Comment', comment)
+
         vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE', fg = palette.grey1[1] })
         vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', fg = palette.grey1[1] })
 
