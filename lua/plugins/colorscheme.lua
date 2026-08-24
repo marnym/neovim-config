@@ -26,6 +26,15 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.api.nvim_set_hl(0, 'BlinkCmpMenuBorder', { bg = 'NONE', fg = palette.fg1[1] })
 
         vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol', { bg = 'NONE', fg = palette.aqua[1] })
+
+        vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' })
+        vim.api.nvim_set_hl(0, 'LineNr', { bg = 'NONE', ctermbg = 'NONE' })
+        vim.api.nvim_set_hl(0, 'Folded', { bg = 'NONE', ctermbg = 'NONE' })
+        vim.api.nvim_set_hl(0, 'NonText', { bg = 'NONE', ctermbg = 'NONE' })
+        vim.api.nvim_set_hl(0, 'SpecialKey', { bg = 'NONE', ctermbg = 'NONE' })
+        vim.api.nvim_set_hl(0, 'VertSplit', { bg = 'NONE', ctermbg = 'NONE' })
+        vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE', ctermbg = 'NONE' })
+        vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'NONE', ctermbg = 'NONE' })
     end,
 })
 
