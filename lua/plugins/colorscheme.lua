@@ -1,44 +1,29 @@
 vim.pack.add {
-    'https://github.com/sainnhe/gruvbox-material',
+    'https://github.com/sainnhe/everforest',
 }
 
 vim.o.background = 'dark'
-vim.g.gruvbox_material_background = 'hard'
-vim.g.gruvbox_material_foreground = 'material'
-vim.g.gruvbox_material_better_performance = 1
-vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
+vim.g.everforest_enable_italic = true
+vim.g.everforest_background = 'hard'
+vim.g.everforest_better_performance = 1
+vim.g.everforest_transparent_background = 1
+vim.g.everforest_diagnostic_virtual_text = ''
 
-local group = vim.api.nvim_create_augroup('GruvboxMaterialCustom', { clear = true })
+-- everforest overrides
 vim.api.nvim_create_autocmd('ColorScheme', {
-    pattern = 'gruvbox-material',
-    group = group,
+    group = vim.api.nvim_create_augroup('custom_highlights_everforest', {}),
+    pattern = 'everforest',
     callback = function()
-        local palette = vim.api.nvim_call_function('gruvbox_material#get_palette',
-            { vim.g.gruvbox_material_background, vim.g.gruvbox_material_foreground, vim.api.nvim_eval('{}') })
+        local config = vim.fn['everforest#get_configuration']()
+        local palette = vim.fn['everforest#get_palette'](config.background, config.colors_override)
+        local set_hl = vim.fn['everforest#highlight']
 
-        local comment = vim.tbl_extend('force', vim.api.nvim_get_hl(0, { name = 'Comment' }), { fg = palette.orange[1] })
-        vim.api.nvim_set_hl(0, 'Comment', comment)
-
-        vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE', fg = palette.grey1[1] })
-        vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', fg = palette.grey1[1] })
-
-        vim.api.nvim_set_hl(0, 'BlinkCmpMenu', { bg = 'NONE', fg = palette.fg1[1] })
-        vim.api.nvim_set_hl(0, 'BlinkCmpMenuBorder', { bg = 'NONE', fg = palette.fg1[1] })
-
-        vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol', { bg = 'NONE', fg = palette.aqua[1] })
-
-        vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' })
-        vim.api.nvim_set_hl(0, 'LineNr', { bg = 'NONE', ctermbg = 'NONE' })
-        vim.api.nvim_set_hl(0, 'Folded', { bg = 'NONE', ctermbg = 'NONE' })
-        vim.api.nvim_set_hl(0, 'NonText', { bg = 'NONE', ctermbg = 'NONE' })
-        vim.api.nvim_set_hl(0, 'SpecialKey', { bg = 'NONE', ctermbg = 'NONE' })
-        vim.api.nvim_set_hl(0, 'VertSplit', { bg = 'NONE', ctermbg = 'NONE' })
-        vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE', ctermbg = 'NONE' })
-        vim.api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'NONE', ctermbg = 'NONE' })
+        -- highlight comments with orange
+        set_hl('Comment', palette.orange, palette.none)
     end,
 })
 
-vim.cmd('colorscheme gruvbox-material')
+vim.cmd('colorscheme everforest')
 
 ---@param msg string
 local function log(msg)
