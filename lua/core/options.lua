@@ -122,7 +122,8 @@ vim.g.netrw_banner = 0
 vim.o.exrc = true
 
 -- enable experimental UI
-require('vim._core.ui2').enable {}
+require('vim._core.ui2').enable()
+
 
 -- highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
