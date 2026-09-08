@@ -2,7 +2,6 @@ vim.pack.add {
     'https://github.com/sainnhe/everforest',
 }
 
-vim.o.background = 'dark'
 vim.g.everforest_enable_italic = true
 vim.g.everforest_background = 'hard'
 vim.g.everforest_better_performance = 1
