@@ -3,7 +3,6 @@ vim.lsp.buf.signature_help { border = 'rounded' }
 
 vim.lsp.enable {
     'ansiblels',
-    'basedpyright',
     'bashls',
     'clangd',
     'cssls',
@@ -16,6 +15,7 @@ vim.lsp.enable {
     'lua_ls',
     'marksman',
     'nil_ls',
+    'pyrefly',
     'superhtml',
     'terraformls',
     'texlab',
