@@ -13,7 +13,7 @@ vim.lsp.enable {
     'jsonls',
     'julials',
     'lua_ls',
-    'marksman',
+    'markdown_oxide',
     'nil_ls',
     'pyrefly',
     'superhtml',
