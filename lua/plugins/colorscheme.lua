@@ -1,5 +1,6 @@
 vim.pack.add {
     'https://github.com/sainnhe/everforest',
+    'https://codeberg.org/yorickpeterse/vim-paper',
 }
 
 vim.g.everforest_enable_italic = true
