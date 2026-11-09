@@ -1,6 +1,7 @@
 vim.pack.add {
     'https://github.com/sainnhe/everforest',
     'https://codeberg.org/yorickpeterse/vim-paper',
+    'https://github.com/kepano/flexoki-neovim',
 }
 
 vim.g.everforest_enable_italic = true
@@ -23,7 +24,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     end,
 })
 
-vim.cmd('colorscheme everforest')
+vim.cmd('colorscheme flexoki')
 
 ---@param msg string
 local function log(msg)
