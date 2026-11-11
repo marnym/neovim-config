@@ -1,6 +1,8 @@
 vim.lsp.buf.hover { border = 'rounded' }
 vim.lsp.buf.signature_help { border = 'rounded' }
 
+vim.lsp.inlay_hint.enable()
+
 vim.lsp.enable {
     'ansiblels',
     'bashls',
