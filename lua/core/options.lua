@@ -128,6 +128,7 @@ vim.opt.iskeyword:append('-')
 
 -- highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
-    pattern = '*',
-    command = 'silent! lua vim.highlight.on_yank({ timeout = 500 })',
+    callback = function()
+        vim.hl.hl_op { timeout = 200 }
+    end,
 })
