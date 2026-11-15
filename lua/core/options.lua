@@ -124,6 +124,7 @@ vim.o.exrc = true
 -- enable experimental UI
 require('vim._core.ui2').enable()
 
+vim.opt.iskeyword:append('-')
 
 -- highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
