@@ -24,7 +24,13 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     end,
 })
 
-vim.cmd('colorscheme flexoki')
+local palette = require('flexoki.palette').palette()
+require('flexoki').colorscheme {
+    highlight_groups = {
+        ['Comment'] = { fg = palette['or'], bg = 'NONE', italic = false },
+    },
+}
+
 
 ---@param msg string
 local function log(msg)
